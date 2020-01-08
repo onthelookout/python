@@ -27,24 +27,29 @@ used_letters = [] # letters already guessed
 
 print("Welcome to my Hangman Game\n\nYour word is: ", progress,". It is ", len(word)," letters long")
 
+def makeaguess():
+    global guess
+    guess = input("\n\nPlease enter your next guess: ")
+    guess = guess.upper()
 
 while wrong < max_guesses and progress != word:
     print("\nYou have ", attempts, " guesses remaining.")
     print("\nYou've used the following letters: ", used_letters)
     print("\nSo far the word is: ", progress)
+    makeaguess()
+    
 
-    guess = input("\n\nPlease enter your next guess: ")
-    guess = guess.upper()
+    if len(guess) > 1:
+        print("\nSingle character only, please")
+        makeaguess()
 
     while not guess in alphabet: # check that only letters and not numbers or chars are used.
         print("\nLetters only, please.")
-        guess = input("\n\nPlease enter your next guess: ")
-        guess = guess.upper()
+        makeaguess()
 
     while guess in used_letters: # check that you've not already used the letter
         print("\nYou've used that letter already.")
-        guess = input("\n\nPlease enter your next guess: ")
-        guess = guess.upper()
+        makeaguess()
 
     used_letters.append(guess) # add letter to the used_letters pile
 
