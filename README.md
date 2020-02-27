@@ -1,4 +1,4 @@
 # python
-Python Coding Training
+On The Lookout
 
-My own little Git space to learn to code
+My own little tiny bit of world to code in
